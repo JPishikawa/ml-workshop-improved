@@ -144,7 +144,7 @@ def get_openshift_info():
     return server, token, project
 
 
-def start_spark_cluster(cluster_name = "default", worker_nodes = "2", timeout_seconds = 300):
+def start_spark_cluster(cluster_name = "default", worker_nodes = "1", timeout_seconds = 300):
     # Creates a new Spark Cluster kubernetes resource from a given name and number of worker nodes.
     # This fuinction fails if the Spark Cluster does not become ready after the given timeout
 
