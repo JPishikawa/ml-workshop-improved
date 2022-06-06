@@ -8,8 +8,8 @@ spec:
 #   - org.apache.hadoop:hadoop-aws:2.7.3
   worker:
     instances: {{ workernodes }}                                      # optional defaults to 1
-    memory: "4Gi"                                       # optional no defaults
-    cpu: 2                                              # optional no defaults
+    memory: "2Gi"                                       # optional no defaults
+    cpu: 1                                              # optional no defaults
   master:
     instances: "1"                                      # optional defaults to 1
     memory: "1Gi"                                       # optional no defaults
@@ -21,7 +21,7 @@ spec:
   sparkWebUI: true                                      # create a service with the Spark UI, defaults to true
   env:                                                  # optional
   - name: SPARK_WORKER_CORES
-    value: 2
+    value: 1
   - name: FOO
     value: bar
   - name: SPARK_METRICS_ON
@@ -30,7 +30,7 @@ spec:
                                                         # kubectl create configmap my-config --from-file=example/config.conf
   sparkConfiguration:                                   # optional, it overrides the config defined above
   - name: spark.executor.memory
-    value: 4
+    value: 2
   - name: spark.sql.conf.autoBroadcastJoinThreshold
     value: 20971520                                     # if the dataframe/RDD size is bigger then this, join operations will use broadcast join
   # downloadData:                                       # optional, it downloads these files to each node
