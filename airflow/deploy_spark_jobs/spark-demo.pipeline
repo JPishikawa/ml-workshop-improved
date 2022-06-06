@@ -14,7 +14,7 @@
           "op": "execute-python-node",
           "app_data": {
             "filename": "start-spark-cluster.py",
-            "runtime_image": "quay.io/ml-aml-workshop/airflow-python-runner:0.0.8",
+            "runtime_image": "quay.io/ml-aml-workshop/airflow-python-runner:0.0.11",
             "include_subdirectories": false,
             "outputs": [
               "spark-info.txt"
@@ -22,7 +22,7 @@
             "env_vars": [
               "SPARK_CLUSTER=user29-cluster",
               "WORKER_NODES=2",
-              "SPARK_CLUSTER=user29-cluster"
+              "S3_ENDPOINT_URL=http://minio-ml-workshop:9000"
             ],
             "dependencies": [
               "spark-cluster.yaml",
@@ -75,12 +75,16 @@
             "filename": "../../notebook/Merge_Data.ipynb",
             "runtime_image": "quay.io/ml-aml-workshop/elyra-spark:0.0.4",
             "env_vars": [
+              "SPARK_CLUSTER=user29-cluster",
+              "WORKER_NODES=2",
               "S3_ENDPOINT_URL=http://minio-ml-workshop:9000"
             ],
             "include_subdirectories": false,
             "outputs": [],
             "dependencies": [
-              "spark_util.py"
+              "spark_util.py",
+              "spark-cluster-route.yaml",
+              "hyper_parameters.py"
             ],
             "invalidNodeError": null,
             "ui_data": {
@@ -133,7 +137,7 @@
           "op": "execute-python-node",
           "app_data": {
             "filename": "stop-spark-cluster.py",
-            "runtime_image": "quay.io/ml-aml-workshop/airflow-python-runner:0.0.8",
+            "runtime_image": "quay.io/ml-aml-workshop/airflow-python-runner:0.0.11",
             "include_subdirectories": false,
             "outputs": [],
             "env_vars": [],
